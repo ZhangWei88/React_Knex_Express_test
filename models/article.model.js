@@ -1,3 +1,4 @@
+const knex = require("knex");
 const db = require("../config/dbConfig");
 
 //get all articles
@@ -23,7 +24,10 @@ const addArticle = (article) => {
 const updateArticle = (id, article) => {
   return db("articles")
     .where("id", id)
-    .update(article, { id: "id", heading: "heading", content: "content" });
+    .update(
+      { ...article },
+      { id: "id", heading: "heading", content: "content" }
+    );
 };
 
 //remove article
