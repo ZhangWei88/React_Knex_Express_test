@@ -12,17 +12,25 @@ const findById = (id) => {
 
 //add a article
 const addArticle = (article) => {
-  return db("articles").insert(article, "id");
+  return db("articles").insert(article, {
+    id: "id",
+    heading: "heading",
+    content: "content",
+  });
 };
 
 //update article
 const updateArticle = (id, article) => {
-  return db("articles").where("id", id).update(article);
+  return db("articles")
+    .where("id", id)
+    .update(article, { id: "id", heading: "heading", content: "content" });
 };
 
 //remove article
 const removeArticle = (id) => {
-  return db("articles").where("id", id).del();
+  return db("articles")
+    .where("id", id)
+    .del({ id: "id", heading: "heading", content: "content" });
 };
 
 module.exports = {

@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 
 //routes import
+const articleRoutes = require("./routes/article.routes");
 
 //express app
 const app = express();
@@ -22,6 +23,7 @@ app.use(
 app.use(morgan("dev"));
 
 //routes
+app.use("/api/articles", articleRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
